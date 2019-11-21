@@ -1,18 +1,18 @@
 import React from 'react'
-import Movies from './movies';
+import Products from './products';
 import axios from 'axios';
 
 
 class Read extends React.Component{
 
     state = {
-        movies: []
+        products: []
     };
 
     componentDidMount() {
-        axios.get('http://localhost:4000/api/movies')
+        axios.get('http://localhost:4000/api/products')
         .then((response)=>{
-            this.setState({movies: response.data.movies})
+            this.setState({products: response.data.products})
         })
         .catch((error)=>{
             console.log(error);
@@ -23,7 +23,7 @@ class Read extends React.Component{
         return(
             <div>
                 <h1>SHOP</h1>
-                <Movies myMovies={this.state.movies}></Movies>
+                <Products myProducts={this.state.products}></Products>
             </div>
         );
     }

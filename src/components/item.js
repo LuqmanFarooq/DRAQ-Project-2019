@@ -3,16 +3,16 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-class MovieItem extends React.Component{
+class Item extends React.Component{
 
   constructor(){
     super();
 
-    this.DeleteMovie = this.DeleteMovie.bind(this);
+    this.DeleteProduct = this.DeleteProduct.bind(this);
   }
-  DeleteMovie(e){
+  DeleteProduct(e){
     console.log("delete clicked");
-    axios.delete("http://localhost:4000/api/movies/"+this.props.movie._id)
+    axios.delete("http://localhost:4000/api/products/"+this.props.product._id)
     .then()
     .catch();
   }
@@ -22,20 +22,20 @@ class MovieItem extends React.Component{
             <div>
 
                 <Card  border="primary" style={{ width: window.innerWidth }}>
-  <Card.Header>{this.props.movie.title}</Card.Header>
+  <Card.Header>{this.props.product.name}</Card.Header>
   <Card.Body>
     <blockquote className="blockquote mb-0">
-    <img src={this.props.movie.poster}></img>
+    <img src={this.props.product.poster}></img>
       <footer>
-      {this.props.movie.year}
+      {this.props.product.price}
       </footer>
     </blockquote>
   </Card.Body>
-  <Button variant="danger" onClick={this.DeleteMovie}>Delete</Button>
-  <Link to={"/edit/" + this.props.movie._id} className="btn btn-primary">Edit</Link>
+  <Button variant="danger" onClick={this.DeleteProduct}>Delete</Button>
+  <Link to={"/edit/" + this.props.product._id} className="btn btn-primary">Edit</Link>
 </Card>
             </div>
         )
     }
 }
-export default MovieItem;
+export default Item;

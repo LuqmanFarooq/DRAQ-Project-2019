@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb+srv://admin:admin@cluster0-t7ocn.mongodb.net/test?retryWrites=true&w=majority';
+const mongoDB = 'mongodb+srv://admin:admin@cluster0-t7ocn.mongodb.net/DRAQ-Project2019?retryWrites=true&w=majority';
 mongoose.connect(mongoDB,{useNewUrlParser:true});
 
 app.use(cors());
@@ -26,13 +26,13 @@ app.use(bodyParser.json())
 
 const Schema = mongoose.Schema;
 
-const movieSchema = new Schema({
-    title:String,
-    year:String,
+const productSchema = new Schema({
+    name:String,
+    price:String,
     poster:String
 })
 
-const MovieModel = mongoose.model('movie', movieSchema);
+const ProductModel = mongoose.model('product', productSchema);
 
 
 app.get('/', (req, res) => res.send('Hello World!'))
@@ -54,47 +54,29 @@ app.post('/name', (req, res) => {
         req.body.lastname)
 })
 
-app.get('/test', (req, res) => {
+app.get('/DRAQ-Project2019', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-app.get('/api/movies', (req, res) => {
+app.get('/api/products', (req, res) => {
 
-    MovieModel.find((error, data) =>{
-        res.json({movies:data});
+    ProductModel.find((error, data) =>{
+        res.json({products:data});
     })
-    // const myMovies = [
-    //     {
-    //         "Title": "Avengers: Infinity War",
-    //         "Year": "2018",
-    //         "Poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
-    //     },
-    //     {
-    //         "Title": "Captain America: Civil War",
-    //         "Year": "2016",
-    //         "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg"
-    //     }
-    // ];
-
-    // res.status(200).json(
-    //     {
-    //         movies: myMovies,
-    //         message: 'Data Sent'
-    //     });
 })
 
-app.get('/api/movies/:id', (req, res)=>{
+app.get('/api/products/:id', (req, res)=>{
     console.log(req.params.id);
 
-    MovieModel.findById(req.params.id, (error,data)=>{
+    ProductModel.findById(req.params.id, (error,data)=>{
         res.json(data);
     })
 })
 
-app.put('/api/movies/:id', (req,res)=>{
+app.put('/api/products/:id', (req,res)=>{
     console.log("Edit"+req.params.id);
 
-    MovieModel.findByIdAndUpdate(req.params.id,
+    ProductModel.findByIdAndUpdate(req.params.id,
         req.body,
         {new:true},
         (error,data)=>{
@@ -102,23 +84,23 @@ app.put('/api/movies/:id', (req,res)=>{
     })
 })
 
-app.delete('/api/movies/:id',(req,res)=>{
+app.delete('/api/products/:id',(req,res)=>{
     console.log(req.params.id);
 
-    MovieModel.deleteOne({_id:req.params.id},
+    ProductModel.deleteOne({_id:req.params.id},
         (error,data) =>{res.json(data);
         })
 })
 
-app.post('/api/movies', (req,res)=>{
+app.post('/api/products', (req,res)=>{
     console.log('Post request Successful');
-    console.log(req.body.title);
-    console.log(req.body.year);
+    console.log(req.body.name);
+    console.log(req.body.price);
     console.log(req.body.poster);
 
-    MovieModel.create({
-        title:req.body.title, 
-        year:req.body.year, 
+    ProductModel.create({
+        name:req.body.name, 
+        price:req.body.price, 
         poster:req.body.poster
     });
 

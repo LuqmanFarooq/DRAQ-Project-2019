@@ -6,85 +6,85 @@ class Create extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {Title:'',
-                  Year:'',
+    this.state = {Name:'',
+                  Price:'',
                 Poster:''};
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleMovieTitleChange = this.handleMovieTitleChange.bind(this);
-    this.handleMovieYearChange = this.handleMovieYearChange.bind(this);
-    this.handleMoviePosterChange = this.handleMoviePosterChange.bind(this);
+    this.handleProductNameChange = this.handleProductNameChange.bind(this);
+    this.handleProductPriceChange = this.handleProductPriceChange.bind(this);
+    this.handleProductPosterChange = this.handleProductPosterChange.bind(this);
   }
   
-  handleMovieTitleChange(e){
-    this.setState({Title: e.target.value});
+  handleProductNameChange(e){
+    this.setState({Name: e.target.value});
   }
 
-  handleMovieYearChange(e){
-    this.setState({Year: e.target.value});
+  handleProductPriceChange(e){
+    this.setState({Price: e.target.value});
   }
 
-  handleMoviePosterChange(e){
+  handleProductPosterChange(e){
     this.setState({Poster: e.target.value});
   }
 
   handleSubmit(e){
-    alert(this.state.Title+ "      " + this.state.Year 
+    alert(this.state.Name+ "      " + this.state.Price 
     +"       "+ this.state.Poster);
     e.preventDefault();
     
     
-                const newMovie = {
-                  title: this.state.Title,
-                  year: this.state.Year,
+                const newProduct = {
+                  name: this.state.Name,
+                  price: this.state.Price,
                   poster: this.state.Poster
                 };
-          axios.post('http://localhost:4000/api/movies',newMovie) 
+          axios.post('http://localhost:4000/api/products',newProduct) 
           .then()
           .catch();
           
 
-          this.setState({Title:'',
-                  Year:'',
+          this.setState({Name:'',
+                  Price:'',
                 Poster:''});    
   }
 
   render() {
     return (
       <div>
-        <h1>Hello from Create component</h1>
+        <h1>Add Products on this Page</h1>
         <form onSubmit={this.handleSubmit}>
         <div className='form-group'>
-          <label>Movie Title</label>
+          <label>Product Name</label>
           <input
           type='text'
           className='form-control'
-          value={this.state.Title}
-          onChange={this.handleMovieTitleChange}
+          value={this.state.Name}
+          onChange={this.handleProductNameChange}
           ></input>
         </div>
         <div className='form-group'>
-          <label>Movie Year</label>
+          <label>Product Price</label>
           <input
           type='text'
           className='form-control'
-          value={this.state.Year}
-          onChange={this.handleMovieYearChange}
+          value={this.state.Price}
+          onChange={this.handleProductPriceChange}
           ></input>
         </div>
         <div className='form-group'>
-          <label>Movie Poster Url</label>
+          <label>Product Poster Url</label>
           <textarea
           row='3'
           className='form-control'
           value={this.state.Poster}
-          onChange={this.handleMoviePosterChange}
+          onChange={this.handleProductPosterChange}
           ></textarea>
         </div>
         <div>
           <input
           type="submit"
-          value="Add Movie">
+          value="Add Product">
           </input>
         </div>
         </form>
