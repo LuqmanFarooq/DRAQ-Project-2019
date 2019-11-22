@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import Create from './components/create';
-import Read from './components/read';
+import Shop from "./components/shop";
 import Edit from './components/edit';
 import Homepage from './components/homepage';
 
@@ -17,10 +17,10 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar bg="secondary" variant="dark">
+          <Navbar bg="primary" variant="dark">
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/read">Read</Nav.Link>
+              <Nav.Link href="/shop">Shop</Nav.Link>
               <Nav.Link href="/create">Create</Nav.Link>
               <h2>It-World</h2>
             </Nav>
@@ -28,7 +28,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/create" component={Create} />
-            <Route path="/read" component={Read} />
+            <Route path="/shop" component={Shop} />
             <Route path="/edit/:id" component={Edit} />
           </Switch>
         </div>
