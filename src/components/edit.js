@@ -15,8 +15,8 @@ class Edit extends React.Component{
         this.handleProductPriceChange = this.handleProductPriceChange.bind(this);
         this.handleProductPosterChange = this.handleProductPosterChange.bind(this);
       }
+      // method for getting product id to edit that product details
 componentDidMount(){
-
     axios.get('http://localhost:4000/api/products/'+this.props.match.params.id)
     .then((response)=>{
         this.setState({
@@ -28,8 +28,8 @@ componentDidMount(){
     })
     .catch();
 
-
 }
+// handle product details change
 handleProductNameChange(e){
     this.setState({Name: e.target.value});
   }
@@ -41,24 +41,24 @@ handleProductNameChange(e){
   handleProductPosterChange(e){
     this.setState({Poster: e.target.value});
   }
-
+// handles submit request
   handleSubmit(e){
     alert(this.state.Name+ "      " + this.state.Price 
     +"       "+ this.state.Poster);
     e.preventDefault();
-    
+    // new product variable
     const newProduct = {
         name: this.state.Name,
         price: this.state.Price,
         poster: this.state.Poster
     };
-     
+     // posting the edits and upadting database
     axios.put('http://localhost:4000/api/products/'+this.state._id, 
     newProduct)
     .then()
     .catch();
 
-
+// setting state
     this.setState({Name:'',
                     Price:'',
                     Poster:''});    

@@ -5,11 +5,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 class Item extends React.Component {
 
+  
+
   constructor() {
     super();
-
+    
     this.DeleteProduct = this.DeleteProduct.bind(this);
   }
+  // delete method 
   DeleteProduct(e) {
     console.log("delete clicked");
     axios.delete("http://localhost:4000/api/products/" + this.props.product._id)
@@ -18,11 +21,12 @@ class Item extends React.Component {
     // RELOADS THE CURRENT PAGE AFTER DELETE
     window.location.reload(true);
   }
-
+  
   render() {
+  
     return (
       <div>
-
+        <div>
         <Card border="primary" style={{ width: window.innerWidth }}>
           <Card.Header>{this.props.product.name}</Card.Header>
           <Card.Body>
@@ -36,6 +40,7 @@ class Item extends React.Component {
           <Button variant="danger" onClick={this.DeleteProduct}>Delete</Button>
           <Link to={"/edit/" + this.props.product._id} className="btn btn-primary">Edit</Link>
         </Card>
+        </div>
       </div>
     )
   }

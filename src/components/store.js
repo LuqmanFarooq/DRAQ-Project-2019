@@ -2,14 +2,18 @@ import React from 'react'
 import Products from './products';
 import axios from 'axios';
 
+// class shop
+class Store extends React.Component {
 
-class Shop extends React.Component {
-
+    // state with products array
     state = {
         products: []
     };
 
+    
+// componentDidMount 
     componentDidMount() {
+        //axios call
         axios.get('http://localhost:4000/api/products')
             .then((response) => {
                 this.setState({ products: response.data.products })
@@ -22,10 +26,10 @@ class Shop extends React.Component {
     render() {
         return (
             <div>
-                <h1>SHOP</h1>
+                <h1>Store</h1>
                 <Products myProducts={this.state.products}></Products>
             </div>
         );
     }
 }
-export default Shop;
+export default Store;

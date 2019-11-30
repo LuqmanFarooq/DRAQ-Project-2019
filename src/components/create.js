@@ -14,7 +14,7 @@ class Create extends React.Component {
             Price: '',
             Poster: ''
         };
-
+        // mehods
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleProductNameChange = this.handleProductNameChange.bind(this);
         this.handleProductPriceChange = this.handleProductPriceChange.bind(this);
@@ -57,9 +57,9 @@ class Create extends React.Component {
             Poster: ''
         });
     }
-
     render() {
         return (
+
             <div className="wrapper">
                 <div className="form-wrapper">
                     <h1>Add New Product</h1>
@@ -92,7 +92,7 @@ class Create extends React.Component {
                             ></textarea>
                         </div>
                         <div className='createProduct'>
-                            <button type="submit">Add Product</button>
+                            <button type="submit"   >Add Product</button>
                         </div>
                     </form>
                 </div>

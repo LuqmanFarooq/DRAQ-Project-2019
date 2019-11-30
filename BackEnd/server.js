@@ -35,7 +35,7 @@ const productSchema = new Schema({
 const ProductModel = mongoose.model('product', productSchema);
 
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('Products api'))
 
 app.get('/whatever', (req, res) => {
     res.send('whatever')
@@ -111,4 +111,4 @@ app.get('/hello/:name', (req, res) => {
     res.send('Hello ' + req.params.name)
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`app listening on port ${port}!`))
