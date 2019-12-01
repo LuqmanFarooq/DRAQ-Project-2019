@@ -5,11 +5,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 class Item extends React.Component {
 
-  
+
 
   constructor() {
     super();
-    
+
     this.DeleteProduct = this.DeleteProduct.bind(this);
   }
   // delete method 
@@ -21,26 +21,25 @@ class Item extends React.Component {
     // RELOADS THE CURRENT PAGE AFTER DELETE
     window.location.reload(true);
   }
-  
+
   render() {
-  
+
     return (
       <div>
-        <div>
         <Card border="primary" style={{ width: window.innerWidth }}>
-          <Card.Header>{this.props.product.name}</Card.Header>
+          <Card.Header style={{ fontWeight: "bold", fontSize: "20px", backgroundColor: "#1e90ff" }}>{this.props.product.name}</Card.Header>
           <Card.Body>
             <blockquote className="blockquote mb-0">
               <img src={this.props.product.poster}></img>
-              <footer>
+              <footer style={{ fontWeight: "bold", fontSize: "20px" }}>
                 {this.props.product.price}
               </footer>
             </blockquote>
           </Card.Body>
           <Button variant="danger" onClick={this.DeleteProduct}>Delete</Button>
-          <Link to={"/edit/" + this.props.product._id} className="btn btn-primary">Edit</Link>
+          <Link to={"/edit/" + this.props.product._id} className="btn btn-success">Edit</Link>
         </Card>
-        </div>
+        <br></br>
       </div>
     )
   }

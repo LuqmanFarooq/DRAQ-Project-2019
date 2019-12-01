@@ -10,8 +10,8 @@ class Store extends React.Component {
         products: []
     };
 
-    
-// componentDidMount 
+
+    // componentDidMount 
     componentDidMount() {
         //axios call
         axios.get('http://localhost:4000/api/products')
